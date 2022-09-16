@@ -1,4 +1,4 @@
-#NGINX - Muthual
+# NGINX - Muthual
 
 A sample project to help run a nginx backend to test muthual authentication
 
