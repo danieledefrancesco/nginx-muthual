@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - './nginx/nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './nginx/www:/etc/nginx/www:ro'
+      - './openssl/certs:/certs:ro'
+    ports:
+      - '8080:8080'
+      - '8443:8443'
+  openssl:
+      build:
+        context: openssl
+      command: '/bin/sh /openssl/create_certs.sh'
+      volumes:
+        - './openssl:/openssl'
+      env_file:
+        - './openssl/.env'
+      
